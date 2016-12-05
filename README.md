@@ -12,7 +12,8 @@ call传入的参数数量不固定,第一个参数指定函数体内this对象�
 call和apply在实际开发中的用途
 1.改变this的指向
 
-var obj1={
+var obj1=
+{
     name:'seven'    
 };
 
