@@ -30,3 +30,56 @@ getName();输出window
 getName.call(obj1); 输出seven
 
 getName.call(obj2); 输出anne
+
+当执行getName.call(obj1)这句代码时，getName函数体内的this指向obj1对象，所以此处
+
+var getName=function(){
+  console.debug(this.name);
+}
+
+相当于
+
+var getName=function(){
+  console.debug(obj1.name);
+}
+
+2.Function.prototype.bind
+
+大部分高级浏览器都实现了内置的Function.prototype.bind用来指定函数内部的this指向
+
+Function.protype.bind=function(context){
+   var self=this;
+   return function(){
+   return self.apply(context,arguments);
+   }
+};
+
+var obj={
+  name:'seven'
+}
+
+var func=function(){
+  console.debug(this.name);
+}.bind(obj);
+
+func();
+
+3.借用其他对象的方法
+
+var A=function(name){
+this.name=name;
+}
+
+var B=function(){
+A.apply(this,arguments);
+}
+
+B.prototype.getName=function(){
+return this.name;
+}
+
+var b=new B('seven');
+
+console.debug(b.getName());
+
+
