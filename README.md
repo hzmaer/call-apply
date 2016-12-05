@@ -24,6 +24,9 @@ window.name='window';
 var getName=function(){
   console.debug(this.name);
 }
+
 getName();输出window
+
 getName.call(obj1); 输出seven
+
 getName.call(obj2); 输出anne
